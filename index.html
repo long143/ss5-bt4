@@ -3,62 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        table {
+            background-color: #a6dbf3;
+            width: 300px;
+            height: 300px;
+            text-align: center;
+        }
+
+        input {
+            width: 306px;
+            height: 55px;
+            font-size: 25px;
+        }
+
+        button {
+            width: 62px;
+            height: 43px;
+        }
+
+    </style>
 </head>
 <body>
-<table>
-  <tr>
-      <td><button onclick="clean()">C</button></td>
-    <td colspan="4"><input type="text" id="space"></td>
-  </tr>
-    <tr>
-        <td><button onclick="inputNumber('+');">+</button> </td>
-        <td><button onclick="inputNumber('1')">1</button></td>
-        <td><button onclick="inputNumber('2')">2</button></td>
-        <td><button onclick="inputNumber('3')">3</button></td>
-    </tr>
-    <tr>
-        <td><button onclick="inputNumber('-')">-</button></td>
-        <td><button onclick="inputNumber('4')">4</button></td>
-        <td><button onclick="inputNumber('5')">5</button></td>
-        <td><button onclick="inputNumber('6')">6</button></td>
-    </tr>
-    <tr>
-        <td><button onclick="inputNumber('*')">x</button></td>
-        <td><button onclick="inputNumber('7')">7</button></td>
-        <td><button onclick="inputNumber('8')">8</button></td>
-        <td><button onclick="inputNumber('9')">9</button></td>
-        <td><button onclick="inputNumber('.')">.</button> </td>
-    </tr>
-    <tr>
+<div class="container">
 
-        <td><button onclick="sqrt()">&radic;</button> </td>
-        <td><button onclick="pow()">x<sup>2</sup></button></td>
-        <td><button onclick="inputNumber('0')">0</button></td>
-        <td><button onclick="result()">=</button></td>
-    </tr>
-</table>
+    <table>
+        <tr class="display">
+            <td colspan="5"><input type="text" id="space"></td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="inputNumber('+');">+</button>
+            </td>
+            <td>
+                <button onclick="inputNumber('1')">1</button>
+            </td>
+            <td>
+                <button onclick="inputNumber('2')">2</button>
+            </td>
+            <td>
+                <button onclick="inputNumber('3')">3</button>
+            </td>
+            <td>
+                <button onclick="clean()">AC</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="inputNumber('-')">-</button>
+            </td>
+            <td>
+                <button onclick="inputNumber('4')">4</button>
+            </td>
+            <td>
+                <button onclick="inputNumber('5')">5</button>
+            </td>
+            <td>
+                <button onclick="inputNumber('6')">6</button>
+            </td>
+            <td>
+                <button onclick="pow()">x<sup>2</sup></button>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <button onclick="inputNumber('*')">x</button>
+            </td>
+            <td>
+                <button onclick="inputNumber('7')">7</button>
+            </td>
+            <td>
+                <button onclick="inputNumber('8')">8</button>
+            </td>
+            <td>
+                <button onclick="inputNumber('9')">9</button>
+            </td>
+            <td>
+                <button onclick="sqrt()">&radic;</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="inputNumber('/')">/</button>
+            </td>
+            <td>
+                <button onclick="inputNumber('.')">.</button>
+            </td>
+            <td>
+                <button onclick="inputNumber('0')">0</button>
+            </td>
+            <td>
+                <button onclick="result()">=</button>
+            </td>
+            <td>
+                <button onclick="log()">log10</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
 <script>
-    function inputNumber(number){
+    function inputNumber(number) {
         document.getElementById('space').value += number;
-        console.log('number ',number);
+        console.log('number ', number);
     }
-    function result(){
+
+    function result() {
         let input = document.getElementById('space').value;
         let result = eval(input);
-        console.log('result',result)
+        console.log('result', result)
         document.getElementById('space').value = result
     }
-    function clean(){
-     document.getElementById('space').value = ' ';
+
+    function clean() {
+        document.getElementById('space').value = ' ';
     }
-    function sqrt(){
+
+    function sqrt() {
         let sqrt = Math.sqrt(document.getElementById('space').value);
         document.getElementById('space').value = sqrt
     }
-    function  pow(){
-        let pow = Math.pow(document.getElementById('space').value,2);
+
+    function pow() {
+        let pow = Math.pow(document.getElementById('space').value, 2);
         document.getElementById('space').value = pow
+    }
+
+    function log() {
+        let log = Math.log10(document.getElementById("space").value);
+        document.getElementById("space").value = log
     }
 </script>
 </body>
